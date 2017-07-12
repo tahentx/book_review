@@ -1,10 +1,16 @@
-class BooksController < ApplicationController
+class BooksController < ApplicationController	
+	before_action :find_book, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@books = Book.all.order(created_at: :desc)
 	end
 
 	def new
 		@book = Book.new
+	end
+
+	def show
+		@book = Book.find(params[:id])
 	end
 	
 	def create
@@ -23,4 +29,7 @@ class BooksController < ApplicationController
 		params.require(:book).permit(:title, :description, :author)
 	end
 
+	def find_book
+		@book = Book.find(params[:id])
+	end
 end
