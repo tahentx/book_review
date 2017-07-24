@@ -5,7 +5,7 @@
 	<% else %>
 	<% @books.each do |book| %>
 	<a href="/books/<%= book.id %>"></a>
-		<%= image_tag book.book_img.url(:book_index) %>
+<%= image_tag book.book_img.url(:book_index) %>
 	<% end %>
 <% end %>
 
